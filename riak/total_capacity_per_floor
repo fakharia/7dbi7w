@@ -1,7 +1,10 @@
 curl -X POST -H "content-type:application/json" \
 http://localhost:8091/mapred --data @- <<EOF
 {
-  "inputs":"rooms",
+  "inputs": {
+    "bucket": "rooms",
+    "key_filters": [["string_to_int"], ["between", 4200, 4399]]
+  },
   "query": [
     {"map": {
       "language":"javascript",
